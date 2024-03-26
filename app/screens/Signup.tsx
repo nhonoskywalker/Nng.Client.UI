@@ -2,20 +2,23 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   SafeAreaView,
   TouchableOpacity,
   Alert,
   Image,
 } from "react-native";
 import React, { useState } from "react";
+
+import PasswordInput from "../components/PasswordInput";
+import EmailInput from "../components/EmailInput";
 import AppButton from "../components/AppButton";
 import InputLabel from "../components/InputLabel";
 
-const Login = ({ navigation }) => {
+const Signup = ({ navigation }) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
   });
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#e8ecf4" }}>
@@ -27,47 +30,44 @@ const Login = ({ navigation }) => {
             alt=""
           />
 
-          <Text style={styles.title}> Sign in to NonoGo</Text>
-          <Text style={styles.subtitle}>
-            {" "}
-            Get access to your daily servicing needs
-          </Text>
+          <Text style={styles.title}> Create an account</Text>
         </View>
 
         <View>
           <View style={styles.input}>
-            <InputLabel>Email Address</InputLabel>
+            <InputLabel> Email Address </InputLabel>
 
-            <TextInput
-              autoCapitalize="none"
-              autoCorrect={false}
-              style={styles.inputControl}
-              placeholder="user@example.com"
-              placeholderTextColor="#6b7280"
+            <EmailInput
               value={form.email}
               onChangeText={(email) => setForm({ ...form, email })}
             />
           </View>
 
           <View style={styles.input}>
-            <InputLabel>Password</InputLabel>
+            <InputLabel> Password </InputLabel>
 
-            <TextInput
-              secureTextEntry
-              style={styles.inputControl}
-              placeholder="**********"
-              placeholderTextColor="#6b7280"
+            <PasswordInput
               value={form.password}
               onChangeText={(password) => setForm({ ...form, password })}
             />
           </View>
 
+          <View style={styles.input}>
+            <InputLabel> Confirm Password </InputLabel>
+
+            <PasswordInput
+              value={form.confirmPassword}
+              onChangeInputLabel={(confirmPassword) =>
+                setForm({ ...form, confirmPassword })
+              }
+            />
+          </View>
+
           <View style={styles.formAction}>
             <AppButton
-              title="Sign In"
+              title="Create Account"
               onPress={() => {
-                Alert.alert("Successfully logged in!");
-                navigation.navigate("ListingDetails");
+                navigation.navigate("AccountSuccessPage");
               }}
             />
           </View>
@@ -75,12 +75,12 @@ const Login = ({ navigation }) => {
           <TouchableOpacity
             style={{ marginTop: "auto" }}
             onPress={() => {
-              navigation.navigate("Signup");
+              navigation.navigate("Login");
             }}
           >
             <Text style={styles.formFooter}>
-              Don't have an account?{" "}
-              <Text style={{ textDecorationLine: "underline" }}> Sign up</Text>
+              Already have an account?{" "}
+              <Text style={{ textDecorationLine: "underline" }}> Sign in</Text>
             </Text>
           </TouchableOpacity>
         </View>
@@ -89,7 +89,7 @@ const Login = ({ navigation }) => {
   );
 };
 
-export default Login;
+export default Signup;
 
 const styles = StyleSheet.create({
   container: {
@@ -122,22 +122,6 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 10,
-  },
-  inputControl: {
-    height: 44,
-    backgroundColor: "#fff",
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    fontSize: 15,
-    fontWeight: "500",
-    color: "#222",
-  },
-  subtitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#929292",
-    textAlign: "center",
   },
   title: {
     fontSize: 30,
