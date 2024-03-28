@@ -12,11 +12,19 @@ import React, { useState } from "react";
 import AppButton from "../components/AppButton";
 import InputLabel from "../components/InputLabel";
 
-const Login = ({ navigation }) => {
+type LoginProps = {
+  navigation: {
+    navigate: Function;
+  };
+};
+
+const Login = (props: LoginProps) => {
+  const { navigation } = props;
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#e8ecf4" }}>
       <View style={styles.container}>

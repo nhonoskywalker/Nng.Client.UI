@@ -10,7 +10,15 @@ import React from "react";
 import { Feather } from "@expo/vector-icons";
 import AppButton from "../components/AppButton";
 
-const CreateAccountSuccessPage = ({ navigation }) => {
+type CreateAccountSuccessPageProps = {
+  navigation: {
+    navigate: Function;
+  };
+};
+
+const CreateAccountSuccessPage = (props: CreateAccountSuccessPageProps) => {
+  const { navigation } = props;
+
   return (
     <View style={styles.background}>
       <ImageBackground

@@ -1,10 +1,17 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, ImageURISource } from "react-native";
 
 import AppText from "./AppText";
 import colors from "../config/colors";
 
-function ListItem({ title, subTitle, image }) {
+type ListItemProps = {
+  title: string;
+  subTitle: string;
+  image: ImageURISource;
+};
+
+function ListItem(props: ListItemProps) {
+  const { title, subTitle, image } = props;
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={image} />

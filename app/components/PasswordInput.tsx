@@ -1,7 +1,14 @@
 import React from "react";
 import { TextInput, StyleSheet } from "react-native";
 
-function PasswordInput({ children }) {
+type PasswordInputProps = {
+  value: string;
+  onChangeText?: Function;
+  onChangeInputLabel?: Function;
+};
+
+function PasswordInput(props: PasswordInputProps) {
+  const { value } = props;
   return (
     <TextInput
       secureTextEntry
@@ -10,7 +17,7 @@ function PasswordInput({ children }) {
       placeholderTextColor="#6b7280"
       maxLength={27}
     >
-      {children}
+      {value}
     </TextInput>
   );
 }

@@ -6,7 +6,14 @@ import AppText from "../components/AppText";
 import ListItem from "../components/ListItem";
 import AppButton from "../components/AppButton";
 
-function ListingDetails({ navigation }) {
+type ListingDetailsProps = {
+  navigation: {
+    navigate: Function;
+  };
+};
+
+function ListingDetails(props: ListingDetailsProps) {
+  const { navigation } = props;
   return (
     <View>
       <Image

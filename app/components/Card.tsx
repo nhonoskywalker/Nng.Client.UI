@@ -1,10 +1,17 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, ImageURISource } from "react-native";
 
 import colors from "../config/colors";
 import AppText from "./AppText";
 
-function Card({ image, title, subTitle }) {
+type CardProps = {
+  image: ImageURISource;
+  title: String;
+  subTitle: String;
+};
+
+function Card(props: CardProps) {
+  const { image, title, subTitle } = props;
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={image} />

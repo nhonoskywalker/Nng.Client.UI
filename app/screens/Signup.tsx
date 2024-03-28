@@ -4,7 +4,6 @@ import {
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
-  Alert,
   Image,
 } from "react-native";
 import React, { useState } from "react";
@@ -14,7 +13,14 @@ import EmailInput from "../components/EmailInput";
 import AppButton from "../components/AppButton";
 import InputLabel from "../components/InputLabel";
 
-const Signup = ({ navigation }) => {
+type SignupProps = {
+  navigation: {
+    navigate: Function;
+  };
+};
+
+const Signup = (props: SignupProps) => {
+  const { navigation } = props;
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -39,7 +45,7 @@ const Signup = ({ navigation }) => {
 
             <EmailInput
               value={form.email}
-              onChangeText={(email) => setForm({ ...form, email })}
+              onChangeText={(email: string) => setForm({ ...form, email })}
             />
           </View>
 
@@ -48,7 +54,9 @@ const Signup = ({ navigation }) => {
 
             <PasswordInput
               value={form.password}
-              onChangeText={(password) => setForm({ ...form, password })}
+              onChangeText={(password: string) =>
+                setForm({ ...form, password })
+              }
             />
           </View>
 
@@ -57,7 +65,7 @@ const Signup = ({ navigation }) => {
 
             <PasswordInput
               value={form.confirmPassword}
-              onChangeInputLabel={(confirmPassword) =>
+              onChangeInputLabel={(confirmPassword: string) =>
                 setForm({ ...form, confirmPassword })
               }
             />

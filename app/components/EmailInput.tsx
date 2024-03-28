@@ -1,7 +1,13 @@
 import React from "react";
 import { TextInput, StyleSheet } from "react-native";
 
-function EmailInput({ children }) {
+type EmailInputProps = {
+  value: string;
+  onChangeText: Function;
+};
+
+function EmailInput(props: EmailInputProps) {
+  const { value } = props;
   return (
     <TextInput
       autoCapitalize="none"
@@ -10,7 +16,7 @@ function EmailInput({ children }) {
       placeholder="user@example.com"
       placeholderTextColor="#6b7280"
     >
-      {children}
+      {value}
     </TextInput>
   );
 }

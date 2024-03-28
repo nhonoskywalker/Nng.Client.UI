@@ -1,13 +1,10 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-
-import Login from "./app/screens/Login";
-import AppText from "./app/components/AppText";
-import CreateAccountSuccessPage from "./app/screens/CreateAccountSuccessPage";
-import Signup from "./app/screens/Signup";
-import Card from "./app/components/Card";
-import ListingDetails from "./app/screens/ListingDetails";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import Login from "./app/screens/Login";
+import CreateAccountSuccessPage from "./app/screens/createAccountSuccessPage";
+import Signup from "./app/screens/Signup";
+import ListingDetails from "./app/screens/ListingDetails";
 
 const Stack = createNativeStackNavigator();
 

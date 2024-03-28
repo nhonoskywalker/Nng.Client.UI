@@ -1,7 +1,13 @@
 import React from "react";
 import { Text } from "react-native";
 
-function InputLabel({ children }) {
+type InputLabelProps = {
+  children: string;
+};
+
+function InputLabel(props: InputLabelProps) {
+  const { children } = props;
+
   return (
     <Text
       style={{
